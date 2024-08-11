@@ -3,13 +3,11 @@ let section = document.querySelector("section");
 let Moves = document.querySelector("section h2");
 let reset = document.querySelector(".resetBtn");
 
-let MoveCount = 4;
+let MoveCount = 14;
 Moves.innerText = `Moves: ${MoveCount}`;
 
 let pairs = (imageData.length)/2;
 let counterPairs = 0;
-let pairs2 = 3;
-
 //Get & Random data;
 const get_rand_Data = ()=>{
     const getData = imageData;
@@ -87,10 +85,10 @@ const get_rand_Data = ()=>{
                     card.style.pointerEvents = "none";
                 })
                 counterPairs++;
-                if(counterPairs === pairs2){
+                if(counterPairs === pairs){
                     setTimeout(() => {
-                    alert("win");
-                    }, 1000);
+                    alert("Hurrah! You're Won the Game..");
+                    }, 300);
                 }
             }else{
                 //decress the count value......
@@ -102,7 +100,7 @@ const get_rand_Data = ()=>{
                         data.style.pointerEvents = "none");
                     setTimeout(() => {
                         alert("You're Loss the Game!! Try again..")     
-                    }, 1000);
+                    }, 300);
                 }
 
 
@@ -113,7 +111,7 @@ const get_rand_Data = ()=>{
                     },1000)
                     
 
-                    console.log(card)
+                    // console.log(card)
                 })
             }  
         }
@@ -157,11 +155,11 @@ const resetAll =()=>{
         })
     }, 2000);
     
-    MoveCount = 4;
+    MoveCount = 14;
     Moves.innerText = `Moves: ${MoveCount}`
     counterPairs = 0;
 
-    console.log(getData);
+    // console.log(getData);
 }
 
 

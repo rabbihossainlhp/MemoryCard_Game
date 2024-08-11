@@ -107,3 +107,31 @@ h1{
     background-clip: text;
     color: transparent;
 }
+
+
+
+/* Make ability for small device */
+@media(max-width:780px){
+    .mainDiv{
+        grid-template-columns: repeat(4,5rem);
+        grid-template-rows: repeat(4,5rem);
+    }
+
+    h1{
+        display: none;
+    }
+
+    section{
+        margin-top: -4.5rem;
+    }
+    .resetBtn{
+        bottom: 9rem;
+    }
+}
+
+@media(max-width:460px){
+    .mainDiv{
+        grid-template-columns: repeat(4, 4rem);
+        grid-template-rows: repeat(4, 4rem);
+    }
+}
