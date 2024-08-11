@@ -5,6 +5,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    flex-direction: column;
+}
 
 
 section{
@@ -15,14 +22,22 @@ section{
     align-items: center;
 }
 section h2{
-    margin-bottom: 2rem;
+    margin-bottom: 1.7rem;
+    position: relative;
+    background-image: linear-gradient(-20deg, #d558c8 0%, #24d292 100%);
+    height: 3rem;
+    width: 8rem;
+    text-align: center;
+    align-content: center;
+    border-radius: 5px;
+    color: #19271e;
 }
 
 
 .mainDiv{
     display: grid;
-    grid-template-columns: repeat(4, 7rem);
-    grid-template-rows: repeat(4, 7rem);
+    grid-template-columns: repeat(4, 6.6rem);
+    grid-template-rows: repeat(4, 6.6rem);
     grid-gap: 2rem;
     perspective: 800px;
 
@@ -35,7 +50,7 @@ section h2{
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1s;
-    box-shadow: 0px 5px 15px rgb(0, 0, 0,0.2);
+    box-shadow: 0px 5px 15px rgb(0, 0, 0,0.3);
 
 }
 .imgSide,.backsideCard{
@@ -50,10 +65,45 @@ section h2{
     transform: rotateY(180deg);
 }
 .backsideCard{
-    background-color: rgb(67, 67, 33);
+    /* background-color: rgb(67, 67, 33); */
+
+    background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
 }
 
 
 .toggleCard{
     transform: rotateY(180deg);
+}
+
+.resetBtn{
+    background-color: cornflowerblue;
+    height: 2rem;
+    width: 7rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 1.7rem;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+.resetBtn:active{
+    transform: scale(0.90);
+    transition: 0.1s ease;
+}
+
+h1{
+    position: absolute;
+    top: 0.8rem;
+    font-style: italic;
+    word-spacing: 3rem;
+    letter-spacing: 2rem;
+    font-weight: bolder;
+    font-family: serif;
+    font-size: 3rem;
+    background-image: linear-gradient(to top, #09203f 0%, #0569ff 100%);
+    background-clip: text;
+    color: transparent;
 }

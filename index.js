@@ -1,9 +1,14 @@
 import {imageData} from"./data.js";
 let section = document.querySelector("section");
 let Moves = document.querySelector("section h2");
-let MoveCount = 7;
+let reset = document.querySelector(".resetBtn");
+
+let MoveCount = 4;
 Moves.innerText = `Moves: ${MoveCount}`;
 
+let pairs = (imageData.length)/2;
+let counterPairs = 0;
+let pairs2 = 3;
 
 //Get & Random data;
 const get_rand_Data = ()=>{
@@ -81,16 +86,32 @@ const get_rand_Data = ()=>{
                     card.classList.remove("flipped");
                     card.style.pointerEvents = "none";
                 })
-                console.log("congratch");
+                counterPairs++;
+                if(counterPairs === pairs2){
+                    setTimeout(() => {
+                    alert("win");
+                    }, 1000);
+                }
             }else{
+                //decress the count value......
+                MoveCount--;
+                Moves.innerText = `Moves: ${MoveCount}`;
+                //check here with conditon if moves = 0 then game will disable.
+                if(MoveCount === 0){
+                    document.querySelectorAll(".singleCard").forEach((data)=>
+                        data.style.pointerEvents = "none");
+                    setTimeout(() => {
+                        alert("You're Loss the Game!! Try again..")     
+                    }, 1000);
+                }
+
+
                 getID.forEach((card)=>{
                     card.classList.remove("flipped");
                     setTimeout(()=>{
                         card.classList.remove("toggleCard");
                     },1000)
                     
-                    MoveCount--;
-                    Moves.innerText = `Moves: ${MoveCount}`;
 
                     console.log(card)
                 })
@@ -100,6 +121,51 @@ const get_rand_Data = ()=>{
 }
 
 
+//annd functionality for reset button
+reset.addEventListener("click", ()=>{
+    resetAll();
+})
 
 
+//declear/define resetAll function
+const resetAll =()=>{
+    const getData = imageData.sort(()=>Math.random()-0.5);
+    const imgSide = document.querySelectorAll(".imgSide");
+    const singleCard = document.querySelectorAll(".singleCard");
+    
+    getData.forEach((card, index)=>{
+        singleCard[index].classList.remove("toggleCard");
+        
+        //make random again...
+        setTimeout(() => {
+            imgSide[index].src = card.img_src;
+        }, 300);
+        
+        singleCard[index].style.pointerEvents = "all";
+        //set name attribute...
+        singleCard[index].setAttribute("name",card.name);
+    })
+
+    setTimeout(() => {
+        singleCard.forEach((card) =>{
+            card.classList.add("toggleCard");
+        })    
+    }, 450);
+    setTimeout(() => {
+        singleCard.forEach((card)=>{
+            card.classList.remove("toggleCard");
+        })
+    }, 2000);
+    
+    MoveCount = 4;
+    Moves.innerText = `Moves: ${MoveCount}`
+    counterPairs = 0;
+
+    console.log(getData);
+}
+
+
+
+
+//call here getRand function.....
 get_rand_Data();
