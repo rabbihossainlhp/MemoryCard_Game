@@ -2,7 +2,7 @@ import {imageData} from"./data.js";
 let section = document.querySelector("section");
 let Moves = document.querySelector("section h2");
 let MoveCount = 7;
-Moves.innerText = MoveCount;
+Moves.innerText = `Moves: ${MoveCount}`;
 
 
 //Get & Random data;
@@ -34,9 +34,26 @@ const get_rand_Data = ()=>{
         //add this two element in main Div.................... 
         section.appendChild(mainDiv);
 
+
         //Now append this all.........................
         section.appendChild(mainDiv);
         mainDiv.appendChild(singleCard);
+
+        //this is simple try to showing card few second initially..........
+        setTimeout(() => {
+            document.querySelectorAll(".singleCard").forEach((card)=>{
+                card.classList.add("toggleCard");
+            })
+        }, 500);
+
+        setTimeout(() => {
+            document.querySelectorAll(".singleCard").forEach((card)=>{
+                card.classList.remove("toggleCard");
+            })
+        }, 2000);
+        //........................end here.................
+
+
         singleCard.appendChild(imgSide)
         singleCard.appendChild(backsideCard);
 
@@ -73,7 +90,7 @@ const get_rand_Data = ()=>{
                     },1000)
                     
                     MoveCount--;
-                    Moves.innerText = MoveCount;
+                    Moves.innerText = `Moves: ${MoveCount}`;
 
                     console.log(card)
                 })
